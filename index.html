@@ -1,0 +1,27 @@
+<html>
+	<head></head>
+	<body>
+		<main>
+			<h1>
+				hello world.	
+			</h1>
+		</main>
+	</body>
+	<script>
+		const endpoint = 'http://localhost:1338/me'
+		const api = async (endpoint, options = {}) => {
+			console.log('>>>>>> api()', api, endpoint, options)
+			const raw = await fetch(endpoint, options)
+			console.log('--- $raw', raw)
+			const response = await raw.json()
+			console.log('--- $response', response)
+			return response
+		}
+		
+		window.addEventListener('load', async () => {
+			console.log('window.onload')
+			const me = await api(endpoint)
+			console.log(me)			
+		})
+	</script>
+</html>
